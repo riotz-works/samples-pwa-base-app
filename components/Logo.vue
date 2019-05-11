@@ -1,16 +1,24 @@
 <template>
-  <div class="VueToNuxtLogo">
-    <div class="Triangle Triangle--two" />
-    <div class="Triangle Triangle--one" />
-    <div class="Triangle Triangle--three" />
-    <div class="Triangle Triangle--four" />
+  <div :style="rotation">
+    <div class="VueToNuxtLogo">
+      <div class="Triangle Triangle--two" />
+      <div class="Triangle Triangle--one" />
+      <div class="Triangle Triangle--three" />
+      <div class="Triangle Triangle--four" />
+    </div>
   </div>
 </template>
 
 
 <script lang="ts">
 import Vue from 'vue'
-export default Vue.extend({})
+export default Vue.extend({
+  computed: {
+    rotation: function(): object {
+      return { animation: `rotate 1s linear 0s infinite forwards` }
+    }
+  }
+})
 </script>
 
 
@@ -81,6 +89,15 @@ export default Vue.extend({})
 @keyframes goright {
   100% {
     left: 70px;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateY(0);
+  }
+  100% {
+    transform: rotateY(360deg);
   }
 }
 </style>
