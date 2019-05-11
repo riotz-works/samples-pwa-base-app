@@ -13,9 +13,25 @@
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
+  props: {
+    counter: Number
+  },
+  data() {
+    return {
+      animation: {}
+    }
+  },
   computed: {
     rotation: function(): object {
-      return { animation: `rotate 1s linear 0s infinite forwards` }
+      return this.animation
+    }
+  },
+  watch: {
+    counter: function(value: number): void {
+      this.animation = { animation: 'none' }
+      setTimeout(() => {
+        this.animation = { animation: `rotate 1s linear 0s ${ value } forwards` }
+      }, 10)
     }
   }
 })

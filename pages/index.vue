@@ -1,7 +1,7 @@
 <template>
   <section class="container">
     <div>
-      <logo />
+      <logo v-bind:counter="counter" />
       <h1 class="title">
         pwa-base-app
       </h1>
@@ -46,6 +46,11 @@ export default Vue.extend({
       sparkles: 0,
       thumbsup: 0,
       heart: 0
+    }
+  },
+  computed: {
+    counter(): number {
+      return this.tada + this.sparkles + this.thumbsup + this.heart
     }
   },
   methods: {
