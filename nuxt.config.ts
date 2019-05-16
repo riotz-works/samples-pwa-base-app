@@ -55,12 +55,18 @@ const config: NuxtConfiguration = {
   ** Build configuration
   */
   build: {
+    publicPath: '/static/',
+
     /*
     ** You can extend webpack config here
     */
     extend(config, ctx) {
     }
-  }
+  },
+
+  router: {
+    base: '/samples-pwa-base-app/'
+  },
 }
 
 export default config
