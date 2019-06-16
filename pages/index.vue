@@ -21,10 +21,7 @@
         >GitHub</a>
       </div>
       <div class="actions">
-        <a @click="addTada" class="button--action">🎉 {{ tada }}</a>
-        <a @click="addSparkles" class="button--action">✨ {{ sparkles }}</a>
-        <a @click="addThumbsup" class="button--action">👍 {{ thumbsup }}</a>
-        <a @click="addHeart" class="button--action">🧡 {{ heart }}</a>
+        <emoji-button v-for="e in emojis" :key="e" :emoji="e" />
         <a @click="clear" class="button--grey">Clear</a>
       </div>
     </div>
@@ -34,43 +31,26 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import EmojiButton from '~/components/EmojiButton.vue'
 import Logo from '~/components/Logo.vue'
 
 export default Vue.extend({
   components: {
-    Logo
+    Logo,
+    EmojiButton
   },
   data() {
     return {
-      tada: 0,
-      sparkles: 0,
-      thumbsup: 0,
-      heart: 0
+      emojis: [ '🎉', '✨', '👍', '🧡' ]
     }
   },
   computed: {
     counter(): number {
-      return this.tada + this.sparkles + this.thumbsup + this.heart
+      return 0
     }
   },
   methods: {
-    addTada: function(): void {
-      this.tada++
-    },
-    addSparkles: function(): void {
-      this.sparkles++
-    },
-    addThumbsup: function(): void {
-      this.thumbsup++
-    },
-    addHeart: function(): void {
-      this.heart++
-    },
     clear: function(): void {
-      this.tada = 0
-      this.sparkles = 0
-      this.thumbsup = 0
-      this.heart = 0
     }
   }
 })
@@ -107,20 +87,5 @@ export default Vue.extend({
 
 .links, .actions {
   padding-top: 15px;
-}
-
-.button--action {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b70d0;
-  color: #3b70d0;
-  text-decoration: none;
-  padding: 10px 10px;
-  cursor: pointer;
-}
-
-.button--action:hover {
-  color: #fff;
-  background-color: #3b70d0;
 }
 </style>
