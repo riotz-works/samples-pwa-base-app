@@ -15,6 +15,11 @@ export default Vue.extend({
       counter: 0
     }
   },
+  created: function() {
+    this.$on('clear', () => {
+      this.counter = 0;
+    })
+  },
   methods: {
     add: function(): void {
       this.counter++

@@ -21,7 +21,7 @@
         >GitHub</a>
       </div>
       <div class="actions">
-        <emoji-button v-for="e in emojis" :key="e" :emoji="e" v-on:countup="add" />
+        <emoji-button v-for="e in emojis" :key="e" :emoji="e" v-on:countup="add" ref="EmojiButtons" />
         <a @click="clear" class="button--grey">Clear</a>
       </div>
     </div>
@@ -55,6 +55,8 @@ export default Vue.extend({
       this.total++
     },
     clear: function(): void {
+      this.total = 0;
+      (this.$refs.EmojiButtons as Vue[]).forEach((value: Vue) => value.$emit('clear'))
     }
   }
 })
