@@ -21,7 +21,7 @@
         >GitHub</a>
       </div>
       <div class="actions">
-        <emoji-button v-for="e in emojis" :key="e" :emoji="e" />
+        <emoji-button v-for="e in emojis" :key="e" :emoji="e" v-on:countup="add" />
         <a @click="clear" class="button--grey">Clear</a>
       </div>
     </div>
@@ -41,15 +41,19 @@ export default Vue.extend({
   },
   data() {
     return {
+      total: 0,
       emojis: [ '🎉', '✨', '👍', '🧡' ]
     }
   },
   computed: {
     counter(): number {
-      return 0
+      return this.total
     }
   },
   methods: {
+    add: function(): void {
+      this.total++
+    },
     clear: function(): void {
     }
   }

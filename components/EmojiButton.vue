@@ -18,6 +18,7 @@ export default Vue.extend({
   methods: {
     add: function(): void {
       this.counter++
+      this.$emit('countup')
     }
   }
 })
